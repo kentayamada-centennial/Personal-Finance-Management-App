@@ -40,7 +40,6 @@
 ### Notifications
 - **Alerts and Reminders:**
   - Notify users of budget limits reached.
-  - Send reminders for upcoming bills or financial obligations.
 
 ### Settings
 - **Profile Management:**
