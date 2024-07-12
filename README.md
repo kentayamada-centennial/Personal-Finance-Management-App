@@ -97,7 +97,6 @@
 ### SETTINGS
 - **settings_id**: Unique identifier for the settings (Primary Key).
 - **email_notifications**: Preference for email notifications.
-- **sms_notifications**: Preference for SMS notifications.
 - **user_id**: Identifier of the user who configures the settings (Foreign Key).
 
 ```mermaid
@@ -153,7 +152,6 @@ erDiagram
     SETTINGS {
         int settings_id PK
         boolean email_notifications
-        boolean sms_notifications
         int user_id FK
     }
     
@@ -411,8 +409,7 @@ erDiagram
   ```json
   {
     "settings_id": 1,
-    "email_notifications": true,
-    "sms_notifications": false
+    "email_notifications": true
   }
   ```
 
@@ -421,7 +418,6 @@ erDiagram
 - **Request Body:**
   ```json
   {
-    "email_notifications": true,
-    "sms_notifications": true
+    "email_notifications": true
   }
   ```
