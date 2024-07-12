@@ -165,8 +165,6 @@ erDiagram
     ACCOUNT ||--o{ TRANSACTION: records
 ```
 
-Sure, here is the list of API endpoints in Markdown format:
-
 ## API Endpoints
 
 ### User Management
