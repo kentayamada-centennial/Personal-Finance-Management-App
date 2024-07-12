@@ -5,7 +5,6 @@
 ### User Management
 - **User Registration and Login:**
   - Allow users to create an account using email and password.
-  - Implement login functionality with the ability to reset passwords.
 
 ### Dashboard
 - **Overview:**
@@ -57,7 +56,6 @@
 - **email**: Email address of the user.
 - **password**: Password for user authentication.
 - **name**: Name of the user.
-- **reset_token**: Token used for password reset.
 
 ### ACCOUNT
 - **account_id**: Unique identifier for the account (Primary Key).
@@ -106,7 +104,6 @@ erDiagram
         string email
         string password
         string name
-        string reset_token
     }
     
     ACCOUNT {
