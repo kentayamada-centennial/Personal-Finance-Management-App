@@ -164,3 +164,266 @@ erDiagram
     USER ||--o{ SETTINGS: configures
     ACCOUNT ||--o{ TRANSACTION: records
 ```
+
+Sure, here is the list of API endpoints in Markdown format:
+
+## API Endpoints
+
+### User Management
+
+#### Register a new user
+- **Endpoint:** `POST /api/users/register`
+- **Request Body:**
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "password123",
+    "name": "User Name"
+  }
+  ```
+
+#### Login a user
+- **Endpoint:** `POST /api/users/login`
+- **Request Body:**
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "password123"
+  }
+  ```
+
+#### Reset password
+- **Endpoint:** `POST /api/users/reset-password`
+- **Request Body:**
+  ```json
+  {
+    "email": "user@example.com"
+  }
+  ```
+
+### Dashboard
+
+#### Get dashboard overview
+- **Endpoint:** `GET /api/dashboard`
+- **Response:**
+  ```json
+  {
+    "total_income": 1000,
+    "total_expenses": 500,
+    "balance": 500,
+    "recent_transactions": [...]
+  }
+  ```
+
+### Accounts Management
+
+#### Add a new account
+- **Endpoint:** `POST /api/accounts`
+- **Request Body:**
+  ```json
+  {
+    "name": "Savings Account",
+    "type": "bank account",
+    "balance": 1000
+  }
+  ```
+
+#### Get all accounts
+- **Endpoint:** `GET /api/accounts`
+- **Response:**
+  ```json
+  [
+    {
+      "account_id": 1,
+      "name": "Savings Account",
+      "type": "bank account",
+      "balance": 1000
+    },
+    ...
+  ]
+  ```
+
+#### Update an account
+- **Endpoint:** `PUT /api/accounts/{account_id}`
+- **Request Body:**
+  ```json
+  {
+    "name": "Updated Account Name",
+    "type": "credit card",
+    "balance": 1500
+  }
+  ```
+
+#### Delete an account
+- **Endpoint:** `DELETE /api/accounts/{account_id}`
+
+### Transaction Management
+
+#### Add a transaction
+- **Endpoint:** `POST /api/transactions`
+- **Request Body:**
+  ```json
+  {
+    "amount": 100,
+    "date": "2023-01-01",
+    "type": "expense",
+    "category": "food",
+    "description": "Grocery shopping",
+    "account_id": 1
+  }
+  ```
+
+#### Get transactions
+- **Endpoint:** `GET /api/transactions`
+- **Response:**
+  ```json
+  [
+    {
+      "transaction_id": 1,
+      "amount": 100,
+      "date": "2023-01-01",
+      "type": "expense",
+      "category": "food",
+      "description": "Grocery shopping",
+      "account_id": 1
+    },
+    ...
+  ]
+  ```
+
+#### Update a transaction
+- **Endpoint:** `PUT /api/transactions/{transaction_id}`
+- **Request Body:**
+  ```json
+  {
+    "amount": 150,
+    "date": "2023-01-01",
+    "type": "expense",
+    "category": "food",
+    "description": "Grocery shopping updated",
+    "account_id": 1
+  }
+  ```
+
+#### Delete a transaction
+- **Endpoint:** `DELETE /api/transactions/{transaction_id}`
+
+### Budget Management
+
+#### Set a budget
+- **Endpoint:** `POST /api/budgets`
+- **Request Body:**
+  ```json
+  {
+    "category": "groceries",
+    "amount": 300
+  }
+  ```
+
+#### Get budgets
+- **Endpoint:** `GET /api/budgets`
+- **Response:**
+  ```json
+  [
+    {
+      "budget_id": 1,
+      "category": "groceries",
+      "amount": 300
+    },
+    ...
+  ]
+  ```
+
+#### Update a budget
+- **Endpoint:** `PUT /api/budgets/{budget_id}`
+- **Request Body:**
+  ```json
+  {
+    "category": "groceries",
+    "amount": 350
+  }
+  ```
+
+#### Delete a budget
+- **Endpoint:** `DELETE /api/budgets/{budget_id}`
+
+### Reporting
+
+#### Generate a report
+- **Endpoint:** `POST /api/reports`
+- **Request Body:**
+  ```json
+  {
+    "start_date": "2023-01-01",
+    "end_date": "2023-01-31"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "report_id": 1,
+    "start_date": "2023-01-01",
+    "end_date": "2023-01-31",
+    "data": {
+      "income": [...],
+      "expenses": [...]
+    }
+  }
+  ```
+
+#### Get reports
+- **Endpoint:** `GET /api/reports`
+- **Response:**
+  ```json
+  [
+    {
+      "report_id": 1,
+      "start_date": "2023-01-01",
+      "end_date": "2023-01-31"
+    },
+    ...
+  ]
+  ```
+
+### Notifications
+
+#### Get notifications
+- **Endpoint:** `GET /api/notifications`
+- **Response:**
+  ```json
+  [
+    {
+      "notification_id": 1,
+      "message": "Budget limit reached for groceries",
+      "date": "2023-01-15",
+      "type": "alert"
+    },
+    ...
+  ]
+  ```
+
+#### Delete a notification
+- **Endpoint:** `DELETE /api/notifications/{notification_id}`
+
+### Settings
+
+#### Get user settings
+- **Endpoint:** `GET /api/settings`
+- **Response:**
+  ```json
+  {
+    "settings_id": 1,
+    "email_notifications": true,
+    "sms_notifications": false
+  }
+  ```
+
+#### Update user settings
+- **Endpoint:** `PUT /api/settings`
+- **Request Body:**
+  ```json
+  {
+    "email_notifications": true,
+    "sms_notifications": true
+  }
+  ```
