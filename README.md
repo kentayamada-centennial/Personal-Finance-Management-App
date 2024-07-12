@@ -421,3 +421,22 @@ erDiagram
     "email_notifications": true
   }
   ```
+
+## App Architecture
+
+```mermaid
+
+graph LR
+    subgraph Client Side
+        RN[React Native App]
+    end
+
+    subgraph AWS
+        ECS[Amazon ECS]
+        RDS[(Amazon RDS)]
+    end
+
+    RN -->|API Requests| ECS
+    ECS -->|Database Queries| RDS
+
+```
