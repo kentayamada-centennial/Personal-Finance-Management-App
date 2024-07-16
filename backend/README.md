@@ -1,4 +1,4 @@
-## How to run the API
+# How to run the API
 
 ### Prerequisites
 
@@ -16,7 +16,7 @@ You need to set the `DefaultConnection` environment variable to your MySQL conne
 Open Command Prompt and set the environment variable:
 
 ```cmd
-setx DefaultConnection "Server=localhost;Database=PersonalFinanceManagement;User=root;Password=yourpassword;"
+setx DefaultConnection "Server=localhost;Database=finance;User=root;Password=yourpassword;"
 ```
 
 ##### On macOS/Linux
@@ -24,7 +24,7 @@ setx DefaultConnection "Server=localhost;Database=PersonalFinanceManagement;User
 Open a terminal and set the environment variable:
 
 ```bash
-export DefaultConnection="Server=localhost;Database=PersonalFinanceManagement;User=root;Password=yourpassword;"
+export DefaultConnection="Server=localhost;Database=finance;User=root;Password=yourpassword;"
 ```
 
 To set it permanently, you can add this line to your shell's configuration file (e.g., `~/.bashrc`, `~/.zshrc`).
