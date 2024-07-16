@@ -16,7 +16,7 @@ You need to set the `DefaultConnection` environment variable to your MySQL conne
 Open Command Prompt and set the environment variable:
 
 ```cmd
-setx DefaultConnection "Server=localhost;Database=finance;User=root;Password=yourpassword;"
+set DefaultConnection="Server=localhost;Database=finance;User=root;Password=yourpassword;"
 ```
 
 ##### On macOS/Linux
