@@ -173,6 +173,14 @@ erDiagram
     "name": "User Name"
   }
   ```
+- **Expected Response:**
+  ```json
+  {
+    "userId": 1,
+    "email": "user@example.com",
+    "name": "User Name"
+  }
+  ```
 
 #### Login a user
 - **Endpoint:** `POST /api/users/login`
@@ -183,13 +191,12 @@ erDiagram
     "password": "password123"
   }
   ```
-
-#### Reset password
-- **Endpoint:** `POST /api/users/reset-password`
-- **Request Body:**
+- **Expected Response:**
   ```json
   {
-    "email": "user@example.com"
+    "userId": 1,
+    "email": "user@example.com",
+    "name": "User Name"
   }
   ```
 
