@@ -163,7 +163,7 @@ erDiagram
 
 ### User Management
 
-#### Register a new user
+#### ✅ Register a new user
 - **Endpoint:** `POST /api/users/register`
 - **Request Body:**
   ```json
@@ -182,7 +182,7 @@ erDiagram
   }
   ```
 
-#### Login a user
+#### ✅ Login a user
 - **Endpoint:** `POST /api/users/login`
 - **Request Body:**
   ```json
@@ -202,7 +202,7 @@ erDiagram
 
 ### Dashboard
 
-#### Get dashboard overview
+#### ✅ Get dashboard overview
 - **Endpoint:** `GET /api/dashboard`
 - **Query Parameters:**
   - `userId` (required): The ID of the user for whom the dashboard summary is to be retrieved.
