@@ -57,5 +57,25 @@ namespace api.Controllers
 
             return Ok(accounts);
         }
+
+        // PUT: api/accounts/{account_id}
+        [HttpPut("{account_id}")]
+        public async Task<IActionResult> UpdateAccount(int account_id, [FromBody] UpdateAccountDto updateAccountDto)
+        {
+            var account = await _context.Account.FindAsync(account_id);
+            if (account == null)
+            {
+                return NotFound("Account not found.");
+            }
+
+            account.Name = updateAccountDto.Name;
+            account.Type = updateAccountDto.Type;
+            account.Balance = updateAccountDto.Balance;
+
+            _context.Entry(account).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return Ok(account);
+        }
     }
 }

@@ -259,7 +259,7 @@ erDiagram
   }
   ```
 
-#### Get all accounts
+#### ✅ Get all accounts
 - **Endpoint:** `GET /api/accounts/{userId}`
 - **Query Parameters:**
   - `userId` (required): The ID of the user whose accounts are to be retrieved.
@@ -283,14 +283,26 @@ erDiagram
   ]
   ```
 
-#### Update an account
+#### ✅ Update an account
 - **Endpoint:** `PUT /api/accounts/{account_id}`
+- **Path Parameters:**
+  - `account_id` (required): The ID of the account to be updated.
 - **Request Body:**
   ```json
   {
     "name": "Updated Account Name",
     "type": "credit card",
-    "balance": 1500
+    "balance": 1500.00
+  }
+  ```
+- **Expected Response:**
+  ```json
+  {
+    "accountId": 1,
+    "name": "Updated Account Name",
+    "type": "credit card",
+    "balance": 1500.00,
+    "userId": 1
   }
   ```
 
