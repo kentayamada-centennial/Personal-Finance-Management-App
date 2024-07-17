@@ -2,6 +2,7 @@
 using api.Dtos;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -38,6 +39,23 @@ namespace api.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(CreateAccount), new { id = account.AccountId }, account);
+        }
+
+        // GET: api/accounts/{userId}
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetAccounts(int userId)
+        {
+            var user = await _context.User.FindAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var accounts = await _context.Account
+                .Where(a => a.UserId == userId)
+                .ToListAsync();
+
+            return Ok(accounts);
         }
     }
 }

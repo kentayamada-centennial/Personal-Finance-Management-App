@@ -260,17 +260,26 @@ erDiagram
   ```
 
 #### Get all accounts
-- **Endpoint:** `GET /api/accounts`
-- **Response:**
+- **Endpoint:** `GET /api/accounts/{userId}`
+- **Query Parameters:**
+  - `userId` (required): The ID of the user whose accounts are to be retrieved.
+- **Expected Response:**
   ```json
   [
     {
-      "account_id": 1,
+      "accountId": 1,
       "name": "Savings Account",
       "type": "bank account",
-      "balance": 1000
+      "balance": 1000.00,
+      "userId": 1
     },
-    ...
+    {
+      "accountId": 2,
+      "name": "Credit Card",
+      "type": "credit card",
+      "balance": -500.00,
+      "userId": 1
+    }
   ]
   ```
 
