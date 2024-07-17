@@ -204,13 +204,33 @@ erDiagram
 
 #### Get dashboard overview
 - **Endpoint:** `GET /api/dashboard`
+- **Query Parameters:**
+  - `userId` (required): The ID of the user for whom the dashboard summary is to be retrieved.
 - **Response:**
   ```json
   {
-    "total_income": 1000,
-    "total_expenses": 500,
-    "balance": 500,
-    "recent_transactions": [...]
+    "totalIncome": 1000.00,
+    "totalExpenses": 500.00,
+    "balance": 1500.00,
+    "recentTransactions": [
+      {
+        "transactionId": 1,
+        "amount": 100.00,
+        "type": "income",
+        "category": "salary",
+        "description": "Monthly salary",
+        "date": "2023-01-01T00:00:00"
+      },
+      {
+        "transactionId": 2,
+        "amount": 50.00,
+        "type": "expense",
+        "category": "groceries",
+        "description": "Grocery shopping",
+        "date": "2023-01-02T00:00:00"
+      },
+      ...
+    ]
   }
   ```
 
