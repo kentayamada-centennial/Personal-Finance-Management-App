@@ -36,8 +36,8 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button style={styles.button} title="Login" onPress={handleLogin} />
-        <Button style={styles.button}
+      <Button title="Login" onPress={handleLogin} />
+        <Button
           title="Go to Register"
           onPress={() => navigation.navigate('Register')}
         />
@@ -57,10 +57,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     padding: 10,
-  },
-  button:{
-    marginVertical: 10,
-    padding: 10,
-    borderColor: 'black',
   }
 });

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getDashboardSummary } from '../services/AccountServices';
 import { useUser } from '../contexts/UserContext';
+import { FlatList, View, Text, StyleSheet} from 'react-native';
 
 export default function DashboardScreen() {
   const [dashboardSummary, setDashboardSummary] = useState(null);
@@ -19,30 +20,39 @@ export default function DashboardScreen() {
     fetchDashboardSummary();
   }, [userId]);
 
+  
   return (
-    <div>
-      <h1>Dashboard Summary</h1>
+    <View style={styles.container}>
+      <Text style={{ fontSize: 16 }}>Dashboard Summary</Text>
       {dashboardSummary ? (
-        <div>
-          <p>Total Income: {dashboardSummary.totalIncome}</p>
-          <p>Total Expenses: {dashboardSummary.totalExpenses}</p>
-          <p>Balance: {dashboardSummary.balance}</p>
-          <h2>Recent Transactions</h2>
-          <ul>
+        <View>
+          <Text>Total Income: {dashboardSummary.totalIncome}</Text>
+          <Text>Total Expenses: {dashboardSummary.totalExpenses}</Text>
+          <Text>Balance: {dashboardSummary.balance}</Text>
+          <Text>Recent Transactions</Text>
+          <FlatList>
             {dashboardSummary.recentTransactions.map((transaction) => (
-              <li key={transaction.transactionId}>
-                <p>Amount: {transaction.amount}</p>
-                <p>Type: {transaction.type}</p>
-                <p>Category: {transaction.category}</p>
-                <p>Description: {transaction.description}</p>
-                <p>Date: {transaction.date}</p>
-              </li>
+              <View key={transaction.transactionId}>
+                <Text>Amount: {transaction.amount}</Text>
+                <Text>Type: {transaction.type}</Text>
+                <Text>Category: {transaction.category}</Text>
+                <Text>Description: {transaction.description}</Text>
+                <Text>Date: {transaction.date}</Text>
+              </View>
             ))}
-          </ul>
-        </div>
+          </FlatList>
+        </View>
       ) : (
-        <p>Loading dashboard summary...</p>
+        <Text>Loading dashboard summary...</Text>
       )}
-    </div>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+});
