@@ -77,5 +77,21 @@ namespace api.Controllers
 
             return Ok(account);
         }
+
+        // DELETE: api/accounts/{account_id}
+        [HttpDelete("{account_id}")]
+        public async Task<IActionResult> DeleteAccount(int account_id)
+        {
+            var account = await _context.Account.FindAsync(account_id);
+            if (account == null)
+            {
+                return NotFound("Account not found.");
+            }
+
+            _context.Account.Remove(account);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

@@ -306,8 +306,12 @@ erDiagram
   }
   ```
 
-#### Delete an account
+#### ✅ Delete an account
 - **Endpoint:** `DELETE /api/accounts/{account_id}`
+- **Path Parameters:**
+  - `account_id` (required): The ID of the account to be deleted.
+- **Expected Response:**
+  - Status: `204 No Content`
 
 ### Transaction Management
 
