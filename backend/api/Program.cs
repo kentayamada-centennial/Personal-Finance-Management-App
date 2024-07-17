@@ -6,6 +6,13 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+        builder.WithOrigins("http://localhost:8081") 
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+});
+
 string? connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 
 if (string.IsNullOrEmpty(connectionString))
@@ -27,6 +34,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonalFinanceApp v1"));
 
 app.UseHttpsRedirection();
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthorization();
 app.MapControllers();
 
