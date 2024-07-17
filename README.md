@@ -236,14 +236,26 @@ erDiagram
 
 ### Accounts Management
 
-#### Add a new account
-- **Endpoint:** `POST /api/accounts`
+#### ✅ Add a new account
+- **Endpoint:** `POST /api/accounts/{userId}`
+- **Query Parameters:**
+  - `userId` (required): The ID of the user to whom the new account will be associated.
 - **Request Body:**
   ```json
   {
     "name": "Savings Account",
     "type": "bank account",
-    "balance": 1000
+    "balance": 1000.00
+  }
+  ```
+- **Expected Response:**
+  ```json
+  {
+    "accountId": 1,
+    "name": "Savings Account",
+    "type": "bank account",
+    "balance": 1000.00,
+    "userId": 1
   }
   ```
 
