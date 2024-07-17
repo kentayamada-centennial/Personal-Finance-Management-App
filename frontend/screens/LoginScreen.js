@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { loginUser } from '../services/UserServices'; 
 import { useUser } from '../contexts/UserContext';
 
-export default function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
   const { login } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,10 +36,16 @@ export default function LoginScreen({ navigation }) {
         secureTextEntry
         style={styles.input}
       />
-      <Button title="Login" onPress={handleLogin} />
+      <Button style={styles.button} title="Login" onPress={handleLogin} />
+        <Button style={styles.button}
+          title="Go to Register"
+          onPress={() => navigation.navigate('Register')}
+        />
     </View>
   );
-}
+};
+
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -52,4 +58,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  button:{
+    marginVertical: 10,
+    padding: 10,
+    borderColor: 'black',
+  }
 });

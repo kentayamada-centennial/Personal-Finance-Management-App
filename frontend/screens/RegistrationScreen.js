@@ -5,13 +5,13 @@ import { useUser } from '../contexts/UserContext';
 
 export default function RegistrationScreen({ navigation }) {
   const { login } = useUser();
-  const [username, setUsername] = useState('');
+  const [Name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
   const handleRegister = async () => {
     try {
-      const userData = { username, password, email };
+      const userData = { Name, password, email };
       const response = await registerUser(userData);
       login(response.userId);
       console.log('Registration successful:', response);
@@ -25,9 +25,9 @@ export default function RegistrationScreen({ navigation }) {
     <View style={styles.container}>
       <Text>Register</Text>
       <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="Name"
+        value={Name}
+        onChangeText={setName}
         style={styles.input}
       />
       <TextInput
