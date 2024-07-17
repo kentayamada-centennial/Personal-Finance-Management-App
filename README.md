@@ -51,104 +51,104 @@
 ## Entity Definitions
 
 ### USER
-- **user_id**: Unique identifier for the user (Primary Key).
+- **userId**: Unique identifier for the user (Primary Key).
 - **email**: Email address of the user.
 - **password**: Password for user authentication.
 - **name**: Name of the user.
 
 ### ACCOUNT
-- **account_id**: Unique identifier for the account (Primary Key).
+- **accountId**: Unique identifier for the account (Primary Key).
 - **name**: Name of the account.
 - **type**: Type of the account (e.g., bank account, credit card, cash).
 - **balance**: Current balance of the account.
-- **user_id**: Identifier of the user who owns the account (Foreign Key).
+- **userId**: Identifier of the user who owns the account (Foreign Key).
 
 ### TRANSACTION
-- **transaction_id**: Unique identifier for the transaction (Primary Key).
+- **transactionId**: Unique identifier for the transaction (Primary Key).
 - **amount**: Amount of the transaction.
 - **date**: Date of the transaction.
 - **type**: Type of transaction (income or expense).
 - **category**: Category of the transaction (e.g., food, rent, entertainment).
 - **description**: Description of the transaction.
-- **account_id**: Identifier of the account associated with the transaction (Foreign Key).
+- **accountId**: Identifier of the account associated with the transaction (Foreign Key).
 
 ### BUDGET
-- **budget_id**: Unique identifier for the budget (Primary Key).
+- **budgetId**: Unique identifier for the budget (Primary Key).
 - **category**: Category for which the budget is set.
 - **amount**: Amount allocated for the budget.
-- **user_id**: Identifier of the user who sets the budget (Foreign Key).
+- **userId**: Identifier of the user who sets the budget (Foreign Key).
 
 ### REPORT
-- **report_id**: Unique identifier for the report (Primary Key).
-- **start_date**: Start date of the report period.
-- **end_date**: End date of the report period.
-- **user_id**: Identifier of the user who generates the report (Foreign Key).
+- **reportId**: Unique identifier for the report (Primary Key).
+- **startDate**: Start date of the report period.
+- **endDate**: End date of the report period.
+- **userId**: Identifier of the user who generates the report (Foreign Key).
 
 ### NOTIFICATION
-- **notification_id**: Unique identifier for the notification (Primary Key).
+- **notificationId**: Unique identifier for the notification (Primary Key).
 - **message**: Notification message.
 - **date**: Date of the notification.
 - **type**: Type of notification (e.g., alert, reminder).
-- **user_id**: Identifier of the user who receives the notification (Foreign Key).
+- **userId**: Identifier of the user who receives the notification (Foreign Key).
 
 ### SETTINGS
-- **settings_id**: Unique identifier for the settings (Primary Key).
-- **email_notifications**: Preference for email notifications.
-- **user_id**: Identifier of the user who configures the settings (Foreign Key).
+- **settingsId**: Unique identifier for the settings (Primary Key).
+- **emailNotifications**: Preference for email notifications.
+- **userId**: Identifier of the user who configures the settings (Foreign Key).
 
 ```mermaid
 erDiagram
     USER {
-        int user_id PK
+        int userId PK
         string email
         string password
         string name
     }
     
     ACCOUNT {
-        int account_id PK
+        int accountId PK
         string name
         string type
         float balance
-        int user_id FK
+        int userId FK
     }
 
     TRANSACTION {
-        int transaction_id PK
+        int transactionId PK
         float amount
         date date
         string type
         string category
         string description
-        int account_id FK
+        int accountId FK
     }
     
     BUDGET {
-        int budget_id PK
+        int budgetId PK
         string category
         float amount
-        int user_id FK
+        int userId FK
     }
     
     REPORT {
-        int report_id PK
-        date start_date
-        date end_date
-        int user_id FK
+        int reportId PK
+        date startDate
+        date endDate
+        int userId FK
     }
     
     NOTIFICATION {
-        int notification_id PK
+        int notificationId PK
         string message
         date date
         string type
-        int user_id FK
+        int userId FK
     }
     
     SETTINGS {
-        int settings_id PK
-        boolean email_notifications
-        int user_id FK
+        int settingsId PK
+        boolean emailNotifications
+        int userId FK
     }
     
     USER ||--o{ ACCOUNT: owns
