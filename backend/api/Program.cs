@@ -6,9 +6,15 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+string? localhostURL = Environment.GetEnvironmentVariable("LocalhostURL");
+
+if (string.IsNullOrEmpty(localhostURL)) {
+    throw new InvalidOperationException("DefaultConnection environment variable is not set.");
+}
+
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowSpecificOrigin", builder =>
-        builder.WithOrigins("http://localhost:8081") 
+        builder.WithOrigins(localhostURL) 
                .AllowAnyMethod()
                .AllowAnyHeader());
 });
