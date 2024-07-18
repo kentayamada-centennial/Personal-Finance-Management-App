@@ -30,8 +30,10 @@ export default function DashboardScreen() {
           <Text>Total Expenses: {dashboardSummary.totalExpenses}</Text>
           <Text>Balance: {dashboardSummary.balance}</Text>
           <Text>Recent Transactions</Text>
-          <FlatList>
-            {dashboardSummary.recentTransactions.map((transaction) => (
+          <FlatList
+            data={dashboardSummary.recentTransactions}
+            keyExtractor={(item) => item.transactionId}
+            renderItem={({ item: transaction }) => (
               <View key={transaction.transactionId}>
                 <Text>Amount: {transaction.amount}</Text>
                 <Text>Type: {transaction.type}</Text>
@@ -39,8 +41,8 @@ export default function DashboardScreen() {
                 <Text>Description: {transaction.description}</Text>
                 <Text>Date: {transaction.date}</Text>
               </View>
-            ))}
-          </FlatList>
+            )}
+          />
         </View>
       ) : (
         <Text>Loading dashboard summary...</Text>
