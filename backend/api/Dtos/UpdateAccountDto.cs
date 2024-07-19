@@ -1,11 +1,9 @@
-﻿namespace api.Models
+﻿namespace api.Dtos
 {
-    public class Account
+    public class UpdateAccountDto
     {
-        public int AccountId { get; set; }
         public required string Name { get; set; }
         public required string Type { get; set; }
         public required decimal Balance { get; set; }
-        public required int UserId { get; set; }
     }
 }

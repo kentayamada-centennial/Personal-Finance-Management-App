@@ -2,7 +2,7 @@
 {
     public class Transaction
     {
-        public required int TransactionId { get; set; }
+        public int TransactionId { get; set; }
         public required decimal Amount { get; set; }
         public required DateTime Date { get; set; }
         public required string Type { get; set; }
