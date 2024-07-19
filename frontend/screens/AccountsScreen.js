@@ -38,7 +38,7 @@ export default function AccountsScreen({ navigation }) {
       </Text>
       <Text style={styles.accountText}>Balance: ${item.balance}</Text>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity /*onPress={() => updateAccount(item.accountId)}*/>
+        <TouchableOpacity onPress={() => navigation.navigate("EditAccount", {account: item})}>
           <FontAwesomeIcon icon={faEdit} size={24} color="orange" />
         </TouchableOpacity>
         <TouchableOpacity

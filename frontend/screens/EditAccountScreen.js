@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Picker,
-  Button,
-  StyleSheet,
-} from "react-native";
-import { useUser } from "../contexts/UserContext";
-import { postAccount } from "../services/AccountServices";
+import React, { useState, useEffect } from "react";
+import { View, Text, TextInput, Button, StyleSheet, Picker } from "react-native";
+import { updateAccount } from "../services/AccountServices";
 
-export default function CreateAccountScreen({ navigation }) {
-  const { userId } = useUser();
+const EditAccountScreen = ({ route, navigation }) => {
+  const { account } = route.params;
+
+  const accountId = account.accountId;
+
   const [accountDetails, setAccountDetails] = useState({
-    name: "",
-    balance: "",
-    type: "SAVINGS",
+    name: account.name,
+    type: account.type,
+    balance: account.balance.toString(),
   });
 
   const handleInputChange = (key, value) => {
@@ -25,33 +20,30 @@ export default function CreateAccountScreen({ navigation }) {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSave = async () => {
     try {
-      const response = await postAccount(userId, {
-        ...accountDetails,
-        balance: accountDetails.balance,
-      });
-      console.log("Account created successfully:", response);
+      await updateAccount(accountId, accountDetails);
       navigation.goBack();
     } catch (error) {
-      console.error("Error creating account:", error);
+      console.error("Failed to update account:", error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Account</Text>
       <Text style={styles.label}>Name</Text>
       <TextInput
         style={styles.input}
         value={accountDetails.name}
-        onChangeText={(text) => handleInputChange("name", text)}
+        onChangeText={(text) =>
+            handleInputChange('name', text)
+        }
       />
       <Text style={styles.label}>Type</Text>
       <Picker
         selectedValue={accountDetails.type}
         style={styles.picker}
-        onValueChange={(itemValue) => handleInputChange("type", itemValue)}
+        onValueChange={(itemValue) => handleInputChange('type', itemValue)}
       >
         <Picker.Item label="Savings" value="SAVINGS" />
         <Picker.Item label="Checking" value="CHECKING" />
@@ -62,24 +54,20 @@ export default function CreateAccountScreen({ navigation }) {
         value={accountDetails.balance}
         onChangeText={(text) => {
           if (text === "" || /^[0-9]+(\.[0-9]{1,2})?$/.test(text)) {
+            handleInputChange('balance', text);
           }
-          handleInputChange("balance", text);
         }}
         keyboardType="numeric"
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      <Button title="Save" onPress={handleSave} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 20,
   },
   label: {
     fontSize: 18,
@@ -100,3 +88,5 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+export default EditAccountScreen;

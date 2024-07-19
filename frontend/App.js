@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
@@ -8,6 +8,7 @@ import DashboardScreen from "./screens/DashboardScreen";
 import { UserProvider } from "./contexts/UserContext";
 import AccountsScreen from "./screens/AccountsScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
+import EditAccountScreen from "./screens/EditAccountScreen";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Accounts" component={AccountsScreen} />
           <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+          <Stack.Screen name="EditAccount" component={EditAccountScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </UserProvider>
