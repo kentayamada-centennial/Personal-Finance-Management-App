@@ -315,7 +315,7 @@ erDiagram
 
 ### Transaction Management
 
-#### Add a transaction
+#### ✅ Add a transaction
 - **Endpoint:** `POST /api/transactions`
 - **Request Body:**
   ```json
@@ -329,7 +329,7 @@ erDiagram
   }
   ```
 
-#### Get transactions
+#### ✅ Get transactions
 - **Endpoint:** `GET /api/transactions`
 - **Response:**
   ```json
@@ -347,7 +347,7 @@ erDiagram
   ]
   ```
 
-#### Update a transaction
+#### ✅ Update a transaction
 - **Endpoint:** `PUT /api/transactions/{transaction_id}`
 - **Request Body:**
   ```json
@@ -361,7 +361,7 @@ erDiagram
   }
   ```
 
-#### Delete a transaction
+#### ✅ Delete a transaction
 - **Endpoint:** `DELETE /api/transactions/{transaction_id}`
 
 ### Budget Management

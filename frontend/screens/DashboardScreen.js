@@ -28,7 +28,6 @@ export default function DashboardScreen({ navigation }) {
       fetchDashboardSummary();
     }, [userId])
   );
-
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Dashboard Summary</Text>
@@ -69,6 +68,7 @@ export default function DashboardScreen({ navigation }) {
               </View>
             )}
           />
+          {/*TODO: Add two touchable opacities for view transaction, and add transaction*/}
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Accounts")}

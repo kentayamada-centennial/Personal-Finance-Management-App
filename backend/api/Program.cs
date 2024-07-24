@@ -13,6 +13,17 @@ if (string.IsNullOrEmpty(connectionString))
     throw new InvalidOperationException("DefaultConnection environment variable is not set.");
 }
 
+string? LocalhostURL = Environment.GetEnvironmentVariable("LocalhostURL");
+
+if (string.IsNullOrEmpty(LocalhostURL)) {
+    throw new InvalidOperationException("LocalhostURL environment variable is not set.");
+}
+
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(
+               builder => builder.WithOrigins(LocalhostURL).AllowAnyHeader().AllowAnyMethod());
+});
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
 
@@ -27,6 +38,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PersonalFinanceApp v1"));
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 
