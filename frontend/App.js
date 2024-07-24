@@ -9,6 +9,7 @@ import { UserProvider } from "./contexts/UserContext";
 import AccountsScreen from "./screens/AccountsScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import EditAccountScreen from "./screens/EditAccountScreen";
+import TransactionsScreen from "./screens/TransactionsScreen";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Register" component={RegistrationScreen} />
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Accounts" component={AccountsScreen} />
+          <Stack.Screen name="Transactions" component={TransactionsScreen} />
           <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
           <Stack.Screen name="EditAccount" component={EditAccountScreen} />
         </Stack.Navigator>

@@ -68,12 +68,17 @@ export default function DashboardScreen({ navigation }) {
               </View>
             )}
           />
-          {/*TODO: Add two touchable opacities for view transaction, and add transaction*/}
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Accounts")}
           >
             <Text style={styles.buttonText}>View Accounts</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Transactions")}
+          >
+            <Text style={styles.buttonText}>View Transactions</Text>
           </TouchableOpacity>
         </View>
       ) : (

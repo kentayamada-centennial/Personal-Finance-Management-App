@@ -81,6 +81,7 @@ namespace api.Controllers
             transaction.Category = updateTransactionDto.Category;
             transaction.Description = updateTransactionDto.Description;
             transaction.AccountId = updateTransactionDto.AccountId;
+            transaction.Date = updateTransactionDto.Date;
             account.Balance += transaction.Amount;
 
             _context.Entry(transaction).State = EntityState.Modified;
