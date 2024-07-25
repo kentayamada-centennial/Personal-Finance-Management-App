@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   TextInput,
-  Picker,
   Button,
   StyleSheet,
+  Picker,
   Platform,
 } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import { updateTransaction } from "../services/TransactionServices";
 import { useUser } from "../contexts/UserContext";
-import { postTransactions } from "../services/TransactionServices";
 import { getAccounts } from "../services/AccountServices";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function CreateTransactionScreen({ navigation }) {
+export default function EditAccountScreen({ route, navigation }) {
+  const { transaction } = route.params;
   const { userId } = useUser();
   const [accounts, setAccounts] = useState([]);
+
+  const transactionId = transaction.transactionId;
+
   const [transactionDetails, setTransactionDetails] = useState({
-    accountId: "",
-    amount: "",
-    type: "INCOME",
-    category: "OTHER",
-    description: "",
-    date: new Date(),
+    accountId: transaction.accountId.toString(),
+    amount: transaction.amount.toString(),
+    type: transaction.type,
+    category: transaction.category,
+    description: transaction.description,
+    date: new Date(transaction.date),
   });
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -33,13 +37,6 @@ export default function CreateTransactionScreen({ navigation }) {
       try {
         const data = await getAccounts(userId);
         setAccounts(data);
-        console.log(data);
-        if (data.length > 0) {
-          setTransactionDetails((prevDetails) => ({
-            ...prevDetails,
-            accountId: data[0].accountId.toString(),
-          }));
-        }
       } catch (error) {
         console.error("Failed to fetch accounts:", error);
       }
@@ -55,33 +52,18 @@ export default function CreateTransactionScreen({ navigation }) {
     });
   };
 
-  const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || transactionDetails.date;
-    setShowDatePicker(false);
-    setTransactionDetails({ ...transactionDetails, date: currentDate });
-  };
-
-  const handleSubmit = async () => {
-    const formattedTransaction = {
-      ...transactionDetails,
-      date: transactionDetails.date.toISOString(),
-      amount:
-        transactionDetails.type.toLocaleLowerCase() === "expense"
-          ? -Math.abs(transactionDetails.amount)
-          : Math.abs(transactionDetails.amount),
-    };
+  const handleSave = async () => {
     try {
-      console.log(formattedTransaction);
-      await postTransactions(formattedTransaction);
+      await updateTransaction(transactionId, transactionDetails);
       navigation.goBack();
     } catch (error) {
-      console.error("Failed to create transaction:", error);
+      console.error("Failed to update transaction:", error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Transaction</Text>
+      <Text style={styles.title}>Edit Transaction</Text>
       <Text style={styles.label}>Account</Text>
       <Picker
         style={styles.picker}
@@ -99,17 +81,16 @@ export default function CreateTransactionScreen({ navigation }) {
       <Text style={styles.label}>Amount $</Text>
       <TextInput
         style={styles.input}
-        placeholder=""
-        keyboardType="numeric"
         value={transactionDetails.amount}
         onChangeText={(value) =>
           handleInputChange("amount", value.replace(/[^0-9]/g, ""))
         }
+        keyboardType="numeric"
       />
       <Text style={styles.label}>Type</Text>
       <Picker
-        style={styles.picker}
         selectedValue={transactionDetails.type}
+        style={styles.picker}
         onValueChange={(itemValue) => handleInputChange("type", itemValue)}
       >
         <Picker.Item label="Income" value="Income" />
@@ -135,11 +116,9 @@ export default function CreateTransactionScreen({ navigation }) {
       <Text style={styles.label}>Description</Text>
       <TextInput
         style={styles.input}
-        placeholder=""
         value={transactionDetails.description}
         onChangeText={(value) => handleInputChange("description", value)}
       />
-      <Text style={styles.label}>Date</Text>
       <TextInput
         style={styles.input}
         value={transactionDetails.date.toLocaleDateString()}
@@ -161,8 +140,7 @@ export default function CreateTransactionScreen({ navigation }) {
           inline
         />
       )}
-
-      <Button title="Create Transaction" onPress={handleSubmit} />
+      <Button title="Save" onPress={handleSave} />
     </View>
   );
 }

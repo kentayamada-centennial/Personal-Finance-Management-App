@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     marginBottom: 20,
-},
+  },
   transactionItem: {
     backgroundColor: "#fff",
     padding: 20,

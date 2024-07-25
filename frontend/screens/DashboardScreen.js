@@ -70,6 +70,12 @@ export default function DashboardScreen({ navigation }) {
           />
           <TouchableOpacity
             style={styles.button}
+            onPress={() => navigation.navigate("CreateTransaction")}
+          >
+            <Text style={styles.buttonText}>Add a Transaction</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => navigation.navigate("Accounts")}
           >
             <Text style={styles.buttonText}>View Accounts</Text>
@@ -79,12 +85,6 @@ export default function DashboardScreen({ navigation }) {
             onPress={() => navigation.navigate("Transactions")}
           >
             <Text style={styles.buttonText}>View Transactions</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("CreateTransaction")}
-          >
-            <Text style={styles.buttonText}>Add a Transaction</Text>
           </TouchableOpacity>
         </View>
       ) : (

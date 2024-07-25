@@ -71,21 +71,31 @@ namespace api.Controllers
             if (transaction == null) {
                 return NotFound("Transaction not found.");
             }
-            var account = await _context.Account.FindAsync(updateTransactionDto.AccountId);
-            if (account == null) {
-                return NotFound("Account not found.");
+
+            var originalAccount = await _context.Account.FindAsync(transaction.AccountId);
+            if (originalAccount == null) {
+                return NotFound("Original account not found.");
             }
 
-            account.Balance -= transaction.Amount;
+            var newAccount = await _context.Account.FindAsync(updateTransactionDto.AccountId);
+            if (newAccount == null) {
+                return NotFound("New account not found.");
+            }
+
+            originalAccount.Balance -= transaction.Amount;
+
             transaction.Amount = updateTransactionDto.Amount;
             transaction.Type = updateTransactionDto.Type;
             transaction.Category = updateTransactionDto.Category;
             transaction.Description = updateTransactionDto.Description;
             transaction.AccountId = updateTransactionDto.AccountId;
             transaction.Date = updateTransactionDto.Date;
-            account.Balance += transaction.Amount;
+
+            newAccount.Balance += transaction.Amount;
 
             _context.Entry(transaction).State = EntityState.Modified;
+            _context.Entry(originalAccount).State = EntityState.Modified;
+            _context.Entry(newAccount).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return Ok(transaction);
@@ -98,6 +108,11 @@ namespace api.Controllers
             if (transaction == null) {
                 return NotFound("Transaction not found.");
             }
+            var account = await _context.Account.FindAsync(transaction.AccountId);
+            if (account == null) {
+                return NotFound("Account not found.");
+            }
+            account.Balance -= transaction.Amount;
 
             _context.Transaction.Remove(transaction);
             await _context.SaveChangesAsync();
