@@ -80,6 +80,12 @@ export default function DashboardScreen({ navigation }) {
           >
             <Text style={styles.buttonText}>View Transactions</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("CreateTransaction")}
+          >
+            <Text style={styles.buttonText}>Add a Transaction</Text>
+          </TouchableOpacity>
         </View>
       ) : (
         <Text>Loading dashboard summary...</Text>

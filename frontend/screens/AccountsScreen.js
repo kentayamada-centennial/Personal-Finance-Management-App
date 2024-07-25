@@ -26,7 +26,6 @@ export default function AccountsScreen({ navigation }) {
           console.error("Failed to fetch accounts:", error);
         }
       };
-
       fetchAccounts();
     }, [userId])
   );

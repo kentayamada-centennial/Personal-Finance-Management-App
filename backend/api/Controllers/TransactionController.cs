@@ -57,6 +57,7 @@ namespace api.Controllers
                     Date = t.Date,
                     AccountId = t.AccountId
                 })
+                .OrderByDescending(t => t.Date)
                 .ToListAsync();
 
             return Ok(transactions);

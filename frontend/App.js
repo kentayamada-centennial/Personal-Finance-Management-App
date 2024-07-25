@@ -10,6 +10,7 @@ import AccountsScreen from "./screens/AccountsScreen";
 import CreateAccountScreen from "./screens/CreateAccountScreen";
 import EditAccountScreen from "./screens/EditAccountScreen";
 import TransactionsScreen from "./screens/TransactionsScreen";
+import CreateTransactionScreen from "./screens/CreateTransactionScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
           <Stack.Screen name="Accounts" component={AccountsScreen} />
           <Stack.Screen name="Transactions" component={TransactionsScreen} />
           <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+          <Stack.Screen name="CreateTransaction" component={CreateTransactionScreen} />
           <Stack.Screen name="EditAccount" component={EditAccountScreen} />
         </Stack.Navigator>
       </NavigationContainer>
