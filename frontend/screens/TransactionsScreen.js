@@ -5,6 +5,8 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +16,8 @@ import {
 } from "../services/TransactionServices";
 import { useUser } from "../contexts/UserContext";
 import { useFocusEffect } from "@react-navigation/native";
+
+const { height } = Dimensions.get("window");
 
 export default function TransactionsScreen({ navigation }) {
   const [transactions, setTransactions] = useState([]);
@@ -36,6 +40,7 @@ export default function TransactionsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Text style={styles.header}>Recent Transactions</Text>
       <FlatList
         data={transactions}
@@ -74,15 +79,23 @@ export default function TransactionsScreen({ navigation }) {
             </View>
           </View>
         )}
+        ListHeaderComponent={<View style={styles.headerSpacer} />}
+        ListFooterComponent={<View style={styles.footerSpacer} />}
+        contentContainerStyle={styles.flatListContainer}
       />
+    </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    flex: 1,
     backgroundColor: "#f5f5f5",
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    padding: 20,
   },
   header: {
     fontSize: 22,
@@ -91,12 +104,9 @@ const styles = StyleSheet.create({
   },
   transactionItem: {
     backgroundColor: "#fff",
-    padding: 20,
-    marginVertical: 8,
+    padding: 10,
     borderRadius: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    marginBottom: 10,
   },
   transactionText: {
     fontSize: 16,
@@ -108,16 +118,13 @@ const styles = StyleSheet.create({
   deleteButton: {
     marginLeft: 10,
   },
-  button: {
-    marginTop: 20,
-    backgroundColor: "#007bff",
-    padding: 15,
-    borderRadius: 5,
-    alignItems: "center",
+  headerSpacer: {
+    height: 10,
   },
-  buttonText: {
-    color: "#ffffff",
-    fontSize: 18,
-    fontWeight: "bold",
+  footerSpacer: {
+    height: 20,
+  },
+  flatListContainer: {
+    flexGrow: 1,
   },
 });

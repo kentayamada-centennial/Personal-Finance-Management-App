@@ -3,16 +3,20 @@ import {
   View,
   Text,
   TextInput,
-  Picker,
   Button,
   StyleSheet,
   Platform,
+  ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useUser } from "../contexts/UserContext";
 import { postTransactions } from "../services/TransactionServices";
 import { getAccounts } from "../services/AccountServices";
 import DatePicker from "react-datepicker";
+import { Picker } from "@react-native-picker/picker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function CreateTransactionScreen({ navigation }) {
@@ -80,7 +84,12 @@ export default function CreateTransactionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS !== "web" ? "padding" : "height"}
+      style={styles.container}
+    >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Text style={styles.title}>Create Transaction</Text>
       <Text style={styles.label}>Account</Text>
       <Picker
@@ -163,14 +172,19 @@ export default function CreateTransactionScreen({ navigation }) {
       )}
 
       <Button title="Create Transaction" onPress={handleSubmit} />
-    </View>
-  );
+      </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   title: {
     fontSize: 20,

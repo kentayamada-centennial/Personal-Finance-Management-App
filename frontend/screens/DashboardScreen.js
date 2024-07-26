@@ -7,6 +7,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ScrollView
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -28,8 +29,9 @@ export default function DashboardScreen({ navigation }) {
       fetchDashboardSummary();
     }, [userId])
   );
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.scrollView} contentContainerStyle={styles.container}>
       <Text style={styles.header}>Dashboard Summary</Text>
       {dashboardSummary ? (
         <View>
@@ -84,19 +86,22 @@ export default function DashboardScreen({ navigation }) {
             style={styles.button}
             onPress={() => navigation.navigate("Transactions")}
           >
-            <Text style={styles.buttonText}>View Transactions</Text>
+            <Text style={styles.buttonText}>View All Transactions</Text>
           </TouchableOpacity>
         </View>
       ) : (
         <Text>Loading dashboard summary...</Text>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flexGrow: 1,
+    minHeight: '100vh',
+  },
   container: {
-    flex: 1,
     padding: 20,
     backgroundColor: "#f5f5f5",
   },

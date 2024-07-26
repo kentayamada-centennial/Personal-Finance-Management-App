@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   const login = async (newUserId) => {
+    newUserId = newUserId.toString();
     await storage.setItem('userId', newUserId);
     setUserId(newUserId);
   };

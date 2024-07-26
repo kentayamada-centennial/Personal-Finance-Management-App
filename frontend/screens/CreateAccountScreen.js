@@ -3,10 +3,10 @@ import {
   View,
   Text,
   TextInput,
-  Picker,
   Button,
   StyleSheet,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import { useUser } from "../contexts/UserContext";
 import { postAccount } from "../services/AccountServices";
 

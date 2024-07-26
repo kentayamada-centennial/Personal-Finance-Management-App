@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Picker } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { updateAccount } from "../services/AccountServices";
+import {Picker} from '@react-native-picker/picker';
 
 const EditAccountScreen = ({ route, navigation }) => {
   const { account } = route.params;
