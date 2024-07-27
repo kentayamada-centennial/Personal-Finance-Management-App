@@ -2,7 +2,7 @@ import axios from "./AxiosConfig";
 
 async function getTransactions(userId) {
   try {
-    const response = await axios.get(`transactions/${userId}`);
+    const response = await axios.get(`Transactions/${userId}`);
     return response.data;
   } catch (error) {
     console.error(
@@ -15,7 +15,7 @@ async function getTransactions(userId) {
 
 async function postTransactions(transactionDetails) {
   try {
-    const response = await axios.post(`transactions`, {
+    const response = await axios.post(`Transactions`, {
       Amount: transactionDetails.amount,
       Type: transactionDetails.type,
       Category: transactionDetails.category,
@@ -36,7 +36,7 @@ async function postTransactions(transactionDetails) {
 async function updateTransaction(transactionId, transactionData) {
   try {
     const response = await axios.put(
-      `transactions/${transactionId}`,
+      `Transactions/${transactionId}`,
       transactionData
     );
     return response.data;
@@ -51,7 +51,7 @@ async function updateTransaction(transactionId, transactionData) {
 
 async function deleteTransaction(transactionId) {
   try {
-    const response = await axios.delete(`transactions/${transactionId}`);
+    const response = await axios.delete(`Transactions/${transactionId}`);
     return response.data;
   } catch (error) {
     console.error(

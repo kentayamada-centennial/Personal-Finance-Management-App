@@ -2,7 +2,7 @@ import axios from './AxiosConfig';
 
 async function getDashboardSummary(userId) {
   try {
-    const response = await axios.get(`dashboard`, { params: { userId } });
+    const response = await axios.get(`Dashboard`, { params: { userId } });
     return response.data;
   } catch (error) {
     console.error('Dashboard summary error:', error.response ? error.response.data : error.message);
@@ -11,7 +11,7 @@ async function getDashboardSummary(userId) {
 }
 async function getAccounts(userId) {
   try {
-    const response = await axios.get(`accounts/${userId}`);
+    const response = await axios.get(`Accounts/${userId}`);
     return response.data;
   } catch (error) {
     console.error('Accounts error:', error.response ? error.response.data : error.message);
@@ -20,7 +20,7 @@ async function getAccounts(userId) {
 }
 async function postAccount(userId, accountDetails) {
   try {
-    const response = await axios.post(`accounts/${userId}`, {
+    const response = await axios.post(`Accounts/${userId}`, {
       Name: accountDetails.name,
       Type: accountDetails.type,
       Balance: accountDetails.balance,
@@ -34,7 +34,7 @@ async function postAccount(userId, accountDetails) {
 
 async function updateAccount(accountId, accountData) {
   try {
-    const response = await axios.put(`accounts/${accountId}`, accountData);
+    const response = await axios.put(`Accounts/${accountId}`, accountData);
     return response.data;
   } catch (error) {
     console.error('Update account error:', error.response ? error.response.data : error.message);
@@ -43,7 +43,7 @@ async function updateAccount(accountId, accountData) {
 }
 async function deleteAccount(accountId) {
   try {
-    const response = await axios.delete(`accounts/${accountId}`);
+    const response = await axios.delete(`Accounts/${accountId}`);
     return response.data;
   } catch (error) {
     console.error('Accounts error:', error.response ? error.response.data : error.message);

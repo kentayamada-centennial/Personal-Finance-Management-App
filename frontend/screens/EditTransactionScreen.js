@@ -93,8 +93,8 @@ export default function EditAccountScreen({ route, navigation }) {
         style={styles.picker}
         onValueChange={(itemValue) => handleInputChange("type", itemValue)}
       >
-        <Picker.Item label="Income" value="Income" />
-        <Picker.Item label="Expense" value="Expense" />
+        <Picker.Item label="Income" value="income" />
+        <Picker.Item label="Expense" value="expense" />
       </Picker>
       <Text style={styles.label}>Category</Text>
       <Picker

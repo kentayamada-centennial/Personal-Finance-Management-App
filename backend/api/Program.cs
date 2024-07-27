@@ -13,15 +13,9 @@ if (string.IsNullOrEmpty(connectionString))
     throw new InvalidOperationException("DefaultConnection environment variable is not set.");
 }
 
-string? LocalhostURL = Environment.GetEnvironmentVariable("LocalhostURL");
-
-if (string.IsNullOrEmpty(LocalhostURL)) {
-    throw new InvalidOperationException("LocalhostURL environment variable is not set.");
-}
-
 builder.Services.AddCors(options => {
     options.AddDefaultPolicy(
-               builder => builder.WithOrigins(LocalhostURL).AllowAnyHeader().AllowAnyMethod());
+        builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>

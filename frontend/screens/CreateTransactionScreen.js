@@ -25,8 +25,8 @@ export default function CreateTransactionScreen({ navigation }) {
   const [transactionDetails, setTransactionDetails] = useState({
     accountId: "",
     amount: "",
-    type: "INCOME",
-    category: "OTHER",
+    type: "income",
+    category: "Other",
     description: "",
     date: new Date(),
   });
@@ -88,7 +88,6 @@ export default function CreateTransactionScreen({ navigation }) {
       behavior={Platform.OS !== "web" ? "padding" : "height"}
       style={styles.container}
     >
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Text style={styles.title}>Create Transaction</Text>
       <Text style={styles.label}>Account</Text>
@@ -121,8 +120,8 @@ export default function CreateTransactionScreen({ navigation }) {
         selectedValue={transactionDetails.type}
         onValueChange={(itemValue) => handleInputChange("type", itemValue)}
       >
-        <Picker.Item label="Income" value="Income" />
-        <Picker.Item label="Expense" value="Expense" />
+        <Picker.Item label="Income" value="income" />
+        <Picker.Item label="Expense" value="expense" />
       </Picker>
       <Text style={styles.label}>Category</Text>
       <Picker
@@ -173,7 +172,6 @@ export default function CreateTransactionScreen({ navigation }) {
 
       <Button title="Create Transaction" onPress={handleSubmit} />
       </ScrollView>
-      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>  );
 }
 
