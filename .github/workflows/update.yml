@@ -26,8 +26,6 @@ jobs:
         run: npm install
         working-directory: ./frontend
 
-      - name: Create preview
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command: eas update --auto
+      - name: Publish update
+        run: eas build -p android --profile preview
         working-directory: ./frontend
