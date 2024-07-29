@@ -1,5 +1,5 @@
-name: update
-on: push
+name: preview
+on: pull_request
 
 jobs:
   update:
@@ -27,5 +27,5 @@ jobs:
         working-directory: ./frontend
 
       - name: Publish update
-        run: eas update --auto
+        run: eas build -p android --profile preview
         working-directory: ./frontend
