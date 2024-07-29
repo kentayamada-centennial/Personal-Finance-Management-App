@@ -1,5 +1,5 @@
-name: update
-on: push
+name: preview
+on: pull_request
 
 jobs:
   update:
@@ -26,6 +26,8 @@ jobs:
         run: npm install
         working-directory: ./frontend
 
-      - name: Publish update
-        run: eas update --auto
+      - name: Create preview
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto
         working-directory: ./frontend
