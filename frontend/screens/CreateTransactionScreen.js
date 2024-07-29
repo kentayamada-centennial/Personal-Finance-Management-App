@@ -15,9 +15,8 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { useUser } from "../contexts/UserContext";
 import { postTransactions } from "../services/TransactionServices";
 import { getAccounts } from "../services/AccountServices";
-import DatePicker from "react-datepicker";
+import DatePicker from "react-date-picker";
 import { Picker } from "@react-native-picker/picker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function CreateTransactionScreen({ navigation }) {
   const { userId } = useUser();
