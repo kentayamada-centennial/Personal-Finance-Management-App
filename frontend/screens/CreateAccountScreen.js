@@ -3,10 +3,10 @@ import {
   View,
   Text,
   TextInput,
-  Picker,
   Button,
   StyleSheet,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import { useUser } from "../contexts/UserContext";
 import { postAccount } from "../services/AccountServices";
 
@@ -60,11 +60,7 @@ export default function CreateAccountScreen({ navigation }) {
       <TextInput
         style={styles.input}
         value={accountDetails.balance}
-        onChangeText={(text) => {
-          if (text === "" || /^[0-9]+(\.[0-9]{1,2})?$/.test(text)) {
-          }
-          handleInputChange("balance", text);
-        }}
+        onChangeText={(text) => handleInputChange("balance", text.replace(/[^0-9]/g, ""))}
         keyboardType="numeric"
       />
       <Button title="Submit" onPress={handleSubmit} />

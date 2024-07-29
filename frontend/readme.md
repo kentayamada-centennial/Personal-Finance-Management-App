@@ -29,7 +29,7 @@ Follow these instructions to set up and run the frontend on your local machine.
     ```sh
     npm install
     ```
-3. **Set up environment variables:**
+3. **Create `.env` in the root direcotry and set up environment variables in `.env`:**
     ```sh
     API_URL=http://your-backend-url.com/api
     ```

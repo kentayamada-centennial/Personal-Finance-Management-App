@@ -2,7 +2,7 @@ import axios from './AxiosConfig';
 
 async function registerUser(userData) {
   try {
-    const response = await axios.post('users/register', userData);
+    const response = await axios.post('Users/register', userData);
     return response.data;
   } catch (error) {
     console.error('Registration error:', error.response ? error.response.data : error.message);
@@ -12,7 +12,7 @@ async function registerUser(userData) {
 
 async function loginUser(loginData) {
   try {
-    const response = await axios.post('users/login', loginData);
+    const response = await axios.post('Users/login', loginData);
     return response.data;
   } catch (error) {
     console.error('Login error:', error.response ? error.response.data : error.message);

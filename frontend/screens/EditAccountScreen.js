@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Picker } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { updateAccount } from "../services/AccountServices";
+import {Picker} from '@react-native-picker/picker';
 
 const EditAccountScreen = ({ route, navigation }) => {
   const { account } = route.params;
@@ -52,11 +53,7 @@ const EditAccountScreen = ({ route, navigation }) => {
       <TextInput
         style={styles.input}
         value={accountDetails.balance}
-        onChangeText={(text) => {
-          if (text === "" || /^[0-9]+(\.[0-9]{1,2})?$/.test(text)) {
-            handleInputChange('balance', text);
-          }
-        }}
+        onChangeText={(text) => handleInputChange('balance', text.replace(/[^0-9]/g, ""))}
         keyboardType="numeric"
       />
       <Button title="Save" onPress={handleSave} />

@@ -44,7 +44,8 @@ namespace api.Controllers
                 Type = t.Type,
                 Category = t.Category,
                 Description = t.Description,
-                Date = t.Date
+                Date = t.Date,
+                AccountId = t.AccountId
             }).ToList();
 
             var dashboardSummary = new DashboardSummaryDto

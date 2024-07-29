@@ -9,6 +9,5 @@ namespace api.Models
         public required string Category { get; set; }
         public required string Description { get; set; }
         public required int AccountId { get; set; }
-        public required Account Account { get; set; }
     }
 }

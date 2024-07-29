@@ -1,19 +1,31 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { storage } from '../utils/storage';
 
 const UserContext = createContext();
 
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  const [userId, setUserId] = useState(localStorage.getItem('userId') || null);
+  const [userId, setUserId] = useState(null);
 
-  const login = (userId) => {
-    localStorage.setItem('userId', userId);
-    setUserId(userId);
+  useEffect(() => {
+    const loadUserId = async () => {
+      const storedUserId = await storage.getItem('userId');
+      if (storedUserId) {
+        setUserId(storedUserId);
+      }
+    };
+    loadUserId();
+  }, []);
+
+  const login = async (newUserId) => {
+    newUserId = newUserId.toString();
+    await storage.setItem('userId', newUserId);
+    setUserId(newUserId);
   };
 
-  const logout = () => {
-    localStorage.removeItem('userId');
+  const logout = async () => {
+    await storage.removeItem('userId');
     setUserId(null);
   };
 

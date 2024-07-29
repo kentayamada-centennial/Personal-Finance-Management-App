@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -26,7 +26,6 @@ export default function AccountsScreen({ navigation }) {
           console.error("Failed to fetch accounts:", error);
         }
       };
-
       fetchAccounts();
     }, [userId])
   );
