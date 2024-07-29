@@ -11,9 +11,8 @@ import { updateTransaction } from "../services/TransactionServices";
 import { useUser } from "../contexts/UserContext";
 import { getAccounts } from "../services/AccountServices";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import DatePicker from "react-datepicker";
+import DatePicker from "react-date-picker";
 import { Picker } from "@react-native-picker/picker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function EditAccountScreen({ route, navigation }) {
   const { transaction } = route.params;
