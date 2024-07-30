@@ -1,3 +1,52 @@
+# Project Proposal for Personal Finance Management App
+
+## Executive Summary
+The Personal Finance Management App is designed to provide users with an easy-to-use tool for tracking their financial transactions, managing budgets, and gaining insights into their spending habits. Unlike existing online services that connect to banks and often come with subscription fees, our app offers a simpler, free solution for personal use, accessible both via web and mobile platforms.
+
+## Project Background
+Many existing financial tracking services can connect directly to banks to gather transaction data. However, these services are not without flaws: some banks deny access requests, and the services typically come with a cost. Our app aims to offer a simpler, cost-free alternative for users who want to manually track their finances without the complexities and fees of current solutions.
+
+## Project Vision & Success Criteria
+The goal of this project is to empower users to manage their finances more effectively by providing a clear view of their income, expenses, and budgets. Success will be measured by user engagement and feedback, the number of active users, and the app's ability to help users make informed financial decisions.
+
+## Potential Risks and Mitigation Strategies
+While using AWS, a trusted and secure cloud service, minimizes many potential risks, we will also implement strong encryption and follow best practices for data security to protect user information.
+
+## Project Scope & Deliverables
+**Initial Phase (2 weeks):**
+- **API Engineering:** Develop and test the backend API using C# and deploy it on AWS ECS Fargate with a MySQL database on AWS RDS.
+- **Frontend Development:** Create a basic web interface using React and a mobile app using React Native Expo.
+- **Dashboard:** Implement a simple dashboard for users to view their financial summary, including total income, expenses, and recent transactions.
+- **Accounts & Transactions:** Enable users to add accounts and transactions, and view account balances.
+
+**Future Iterations:**
+- **Mobile Deployment:** Extend the mobile app to support both Android and iOS platforms.
+- **Enhanced Features:** Introduce budget management, notifications, and detailed reporting functionalities.
+
+## Expected Benefits
+The app will provide users with a straightforward tool to track their finances, helping them make better financial decisions and manage their budgets effectively. Over time, additional features will enhance the user experience and provide deeper financial insights.
+
+## Project Resource Requirements
+- **Technologies:** React, C#, React Native Expo, AWS ECS Fargate, AWS RDS, Swagger, GitHub
+- **Tools:** Visual Studio Code, Postman, Expo Go, AWS Console
+
+## Project Timeline
+**Day 1 - Day 3:**
+- API Engineering: Develop and test backend API using C#.
+- Set up AWS ECS Fargate and RDS.
+
+**Day 4 - Day 7:**
+- Frontend Development: Create web interface using React.
+- Implement basic dashboard and account management.
+
+**Day 8 - Day 10:**
+- Mobile Development: Start with React Native Expo for the mobile app.
+- Ensure account and transaction management work on mobile.
+
+**Day 11 - Day 14:**
+- Testing: Perform thorough testing across web and mobile platforms.
+- Deployment: Deploy backend to AWS and finalize local deployment for frontend.
+
 # Requirement Definition for Personal Finance Management App
 
 ## Functionality
