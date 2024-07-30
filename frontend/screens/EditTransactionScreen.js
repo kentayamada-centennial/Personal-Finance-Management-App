@@ -45,6 +45,12 @@ export default function EditAccountScreen({ route, navigation }) {
     fetchAccounts();
   }, [userId]);
 
+  const handleDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || transactionDetails.date;
+    setShowDatePicker(false);
+    setTransactionDetails({ ...transactionDetails, date: currentDate });
+  };
+  
   const handleInputChange = (key, value) => {
     setTransactionDetails({
       ...transactionDetails,
